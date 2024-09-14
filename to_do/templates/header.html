@@ -1,0 +1,23 @@
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="{% url "users:home" %}">To Do App</a>
+
+        <ul class="flex-row gap-3 navbar-nav mr-auto">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <form method="post" action="{% url "users:log-out" %}">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-link">Logout</button>
+                    </form>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "users:sign-in" %}">Sign in</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url "users:sign-up" %}">Sign up</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

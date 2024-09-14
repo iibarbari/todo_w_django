@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}Edit item{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col col-lg-6 offset-lg-3">
+                <a class="text-link" href="{% url 'items:list' %}"><- Go back</a>
+
+                <h1 class="mt-5">Edit your to-do item</h1>
+
+                <form action='{% url 'items:update' id=id %}' method="POST">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label for="id_title" class="form-label">{{ form.title.label }}</label>
+
+                        {{ form.title }}
+
+                        {% if form.title.help_text %}
+                            <div class="form-text">{{ form.title.help_text }}</div>
+                        {% endif %}
+
+                        {% for error in form.title.errors %}
+                            <div class="invalid-feedback">{{ form.errors.title }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_title" class="form-label">{{ form.details.label }}</label>
+
+                        {{ form.details }}
+
+                        {% if form.details.help_text %}
+                            <div class="form-text">{{ form.details.help_text }}</div>
+                        {% endif %}
+
+                        {% for error in form.errors.details %}
+                            <div class="invalid-feedback">{{ form.errors.details }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-check mb-3">
+                        {{ form.completed }}
+
+                        <label class="form-check-label" for="id_completed">
+                            {{ form.completed.label }}
+                        </label>
+                    </div>
+
+                    <input class="btn btn-primary" type="submit" />
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

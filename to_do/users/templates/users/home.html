@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col col-lg-8 offset-lg-2 text-center">
+                <h1>The best to-do app ever</h1>
+
+                <p class="lead">Here you can manage your to-do items. You can create, edit, and delete them.</p>
+
+                <a class="btn btn-lg btn-primary" href="{% url 'users:sign-in' %}">Sign in</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
